@@ -1,0 +1,38 @@
+push code to github:
+
+git init
+git add .
+git commit -m "Initial commit"
+git remote add origin <your-repository-url>
+git push -u origin master
+
+Create a PythonAnywhere account: Go to PythonAnywhere and sign up for an account.
+
+Open the PythonAnywhere Bash console: After logging in, go to the Consoles tab and start a new Bash console.
+
+Clone your Git repository: In the Bash console, clone your Git repository to PythonAnywhere.
+
+git clone <your-repository-url>
+
+Create a virtual environment and install dependencies: Still in the Bash console, navigate to your project directory, create a new virtual environment, and install your project's dependencies.
+
+cd <your-project-directory>
+mkvirtualenv --python=/usr/bin/python3.8 myenv  # replace "myenv" with your preferred environment name
+pip install flask flask_sqlalchemy psycopg2-binary
+
+Set up the WSGI file: Go to the Web tab, click on "Add a new web app", follow the steps without changing the defaults until you reach the configuration screen. In the "Code" section, go to the "WSGI configuration file" and replace the contents with the following:
+
+```
+import sys
+
+# add your project directory to the sys.path
+project_home = '/home/<your-pythonanywhere-username>/<your-project-directory>'
+if project_home not in sys.path:
+    sys.path = [project_home] + sys.path
+
+# import flask app but need to call it "application" for WSGI to work
+from app import app as application  # adjust for your app module
+```
+
+Reload your web app: Go back to the Web tab and click on the big green "Reload" button.
+Your Flask application should now be live on PythonAnywhere. You can access it at <your-pythonanywhere-username>.pythonanywhere.com.
