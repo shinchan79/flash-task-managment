@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 # Update the password in the URI below
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://yentrinh:PythonAnywhere1@yentrinh.mysql.pythonanywhere-services.com/test'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://yentrinh:PythonAnywhere1@yentrinh.mysql.pythonanywhere-services.com/yentrinh$test'
 db = SQLAlchemy(app)
 
 class Task(db.Model):
