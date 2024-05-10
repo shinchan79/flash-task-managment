@@ -2,7 +2,8 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://yentrinh:%40Shinchan1@yentrinh.mysql.pythonanywhere-services.com/test'
+# Update the password in the URI below
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://yentrinh:PythonAnywhere1@yentrinh.mysql.pythonanywhere-services.com/test'
 db = SQLAlchemy(app)
 
 class Task(db.Model):
@@ -39,7 +40,7 @@ def delete(task_id):
     db.session.commit()
     return redirect(url_for('index'))
 
-# To this:
+# This ensures that the database tables are created based on the defined models
 with app.app_context():
     db.create_all()
 
