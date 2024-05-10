@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://yentrinh:Shinchan1@yentrinh.mysql.pythonanywhere-services.com/test'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://yentrinh:@Shinchan1@yentrinh.mysql.pythonanywhere-services.com/test'
 db = SQLAlchemy(app)
 
 class Task(db.Model):
